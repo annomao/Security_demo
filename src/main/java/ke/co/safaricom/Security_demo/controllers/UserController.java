@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1/")
+@RequestMapping("api/v1")
 public class UserController {
     private UserService userService;
 
@@ -27,7 +27,7 @@ public class UserController {
         return ResponseEntity.of(userService.getUser(id));
     }
 
-    @PostMapping("users/create/")
+    @PostMapping("/users/create")
     public ResponseEntity<User> createUser(@RequestBody UserCreateRequest userCreateRequest){
         return ResponseEntity.ok(userService.createUser(userCreateRequest));
     }

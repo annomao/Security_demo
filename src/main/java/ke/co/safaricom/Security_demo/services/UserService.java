@@ -3,6 +3,7 @@ package ke.co.safaricom.Security_demo.services;
 import ke.co.safaricom.Security_demo.dtos.UserCreateRequest;
 import ke.co.safaricom.Security_demo.entities.User;
 import ke.co.safaricom.Security_demo.repositories.UserRepository;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Optional;
 public class UserService {
     private final UserRepository userRepository;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
     }
 

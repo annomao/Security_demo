@@ -19,7 +19,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new MyUserDetailsService();
     }
     @Bean
-    public BCryptPasswordEncoder passwordEncoder(){
+    public static BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(HttpSecurity http) throws  Exception{
         http.authorizeHttpRequests()
                 .antMatchers("api/v1/users/create/").permitAll()
-                .antMatchers("/api/v1/users","/api/v1/users/get/{id}", "/api/v1/bookings","bookings/get/{id}").hasAnyRole("USER","ADMIN")
+                .antMatchers("/api/v1/users","/api/v1/users/get/{id}", "/api/v1/users/{id}/bookings","api/v1/bookings/get/{id}").hasAnyRole("USER","ADMIN")
                 .antMatchers("/api/v1/bookings/delete/{id}").hasRole("ADMIN")
                 .and().httpBasic()
                 .and().logout();

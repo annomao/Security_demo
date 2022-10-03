@@ -1,5 +1,7 @@
 package ke.co.safaricom.Security_demo.entities;
 
+import ke.co.safaricom.Security_demo.config.WebSecurityConfig;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -67,5 +69,9 @@ public class User {
 
     public void addBooking(Booking booking){
         this.getBooking().add(booking);
+    }
+    @PrePersist
+    public void encryptPassword(){
+        this.password = WebSecurityConfig.passwordEncoder().encode(this.getPassword());
     }
 }
