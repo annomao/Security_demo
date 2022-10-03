@@ -16,7 +16,7 @@ public class User {
     private String email;
     private  String role;
 
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private List<Booking> booking;
     public List<Booking> getBooking() {
