@@ -1,6 +1,7 @@
 package ke.co.safaricom.Security_demo.entities;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "users")
@@ -12,6 +13,18 @@ public class User {
     private String password;
     private String email;
     private  String role;
+
+    @OneToMany
+    @JoinColumn(name = "user_id")
+    private List<Booking> booking;
+    public List<Booking> getBooking() {
+        return booking;
+    }
+
+    public void setBooking(List<Booking> booking) {
+        this.booking = booking;
+    }
+
 
     public long getId() {
         return id;
@@ -48,8 +61,11 @@ public class User {
     public String getRole() {
         return role;
     }
-
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public void addBooking(Booking booking){
+        this.getBooking().add(booking);
     }
 }

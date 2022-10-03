@@ -24,9 +24,9 @@ public class BookingController {
     public ResponseEntity<String> deleteBooking(@PathVariable long id){
         return ResponseEntity.ok(bookingService.deleteBooking(id));
     }
-    @PostMapping("/bookings")
-    public ResponseEntity<Booking> createBooking(@RequestBody BookingCreateRequest booking){
-        return ResponseEntity.ok(bookingService.createBooking(booking));
+    @PostMapping("users/{id}/bookings")
+    public ResponseEntity<Booking> createBooking(@PathVariable long id,@RequestBody BookingCreateRequest booking){
+        return ResponseEntity.ok(bookingService.createBooking(id,booking));
     }
 
 
